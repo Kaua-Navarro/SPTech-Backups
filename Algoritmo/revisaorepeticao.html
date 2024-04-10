@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="exibir()">Exibir</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function exibir() {
+
+        var texto = "";
+
+        for (var index = 0; index >= 0 && index <= 100000; index++) {
+
+            if (index == 666) {
+                texto += (`666 é número do capeta! <br>`);
+            } else {    
+                texto += (`Você estudou por ${index} minutos. <br>`);
+            }
+        }
+
+        div_msg.innerHTML = texto;
+    }
+</script>

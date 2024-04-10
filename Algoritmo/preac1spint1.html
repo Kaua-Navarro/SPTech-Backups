@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREAC1TREINAMENTO</title>
+</head>
+<body>
+    <p>Distância percorrida:</p>
+    <input type="text" id="inp_distp" placeholder="Insira distância percorrida:">
+    <p>Tempo de duração da viagem:</p>
+    <input type="text" id="inp_tempodura" placeholder="Insira tempo de viagem:">
+    <p>Quantidade de passageiros:</p>
+    <input type="text" id="inp_qtdpassageiros" placeholder="Insira quantidade de passageiros:">
+    <p>Hora de início da viagem:</p>
+    <input type="text" id="inp_horainicio" placeholder="Insira hora de início da viagem:"><br><br>
+
+    <button onclick="calc()">Realizar viagem!</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+
+    var distancia = 0;
+    var duracao = 0;
+    var qtdpa = 0;
+    var inicio = 0;
+
+    function calc(){
+        distancia = Number (inp_distp.value);
+        duracao = Number (inp_tempodura.value);
+        qtdpa = Number (inp_qtdpassageiros.value);
+        inicio = Number (inp_horainicio.value);
+
+        var distp = distancia * 0.77;
+        var estmatp = distancia * 1.8;
+        var estmatp10 = estmatp * 0.1;
+        var estmatp10ma = estmatp + estmatp10;
+        var estmatp10me = estmatp - estmatp10;
+
+        if (duracao >= estmatp10ma) {
+            distp = distp * 0.07 - distp;
+        }
+
+    }
+</script>

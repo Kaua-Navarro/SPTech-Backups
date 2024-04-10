@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="boatarde">
+    <button onclick="button()">Bom dia!</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    
+    
+    function button() {
+        var btd = boatarde.value;
+
+        if (btd == "Boa Tarde!") {
+        for (var msg = 1; msg < 8; msg ++) {
+            div_msg.innerHTML += `${msg}. Boa tarde!<br>`;
+            
+        }
+    } else {
+        div_msg.innerHTML = ` `;
+    }
+    }
+</script>

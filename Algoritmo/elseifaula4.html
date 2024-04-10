@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media</title>
+</head>
+
+<body>
+    <h1>Analisar input_idade 4</h1>
+    <p>Entre com idade</p>
+    <input type="text" id="input_idade"><br><br>
+    <button onclick="analisar()">Analisar</button>
+    <button onclick="frizzanilar()">Finalizar</button>
+</body>
+
+</html>
+
+<script>
+    var maior = 0;
+    var menor_16 = 0;
+    var menor_eleitor = 0;
+    var total = 0;
+    function analisar() {
+        var idade = Number(input_idade.value);
+        if (idade >= 18) {
+            maior++;
+            alert(`Total de pessoas maior de idade = ${maior}`);
+        } else {
+
+            if (idade >= 16) {
+                menor_eleitor++;
+                alert(`Total de eleitores menor de idade = ${menor_eleitor}`);
+            }
+            else {
+                menor_16++;
+                alert(`Total de pessoas menores de 16 anos = ${menor_16}`);
+            }
+
+            alert(`Este alerta impede a utilização do ELSE IF`);
+        }
+
+        total += idade;
+    }
+
+    function frizzanilar() {
+        alert(`A idade média é = ${total / (maior + menor_eleitor + menor_16)}`);
+        maior = 0;
+        menor_eleitor = 0;
+        menor_16 = 0;
+        total = 0;
+    }
+
+</script>

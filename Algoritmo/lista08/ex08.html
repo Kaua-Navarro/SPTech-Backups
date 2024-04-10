@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <p>Infrome o nome da empresa:</p>
+    <input type="text" id="input_nome">
+    <p>Informe o valor da bolsa da empresa:</p>
+    <input type="text" id="input_bolsa">
+    <p>Informe o valor de VR da empresa:</p>
+    <input type="text" id="input_vr">
+    <p>Informe tempo de deslocamento da empresa para a SPTech:</p>
+    <input type="text" id="input_desloc"> <br><br>
+    <button onclick="preferida()">É preferida?</button> <br><br>
+    <div id="div_msg"></div>
+    </center>
+</body>
+</html>
+
+<script>
+    function preferida() {
+        var nome = input_nome.value;
+        var bolsa = Number (input_bolsa.value);
+        var vr = Number (input_vr.value);
+        var desloc = Number (input_desloc.value);
+
+        if (bolsa >= 1800 || vr >= 20 || desloc <= 30) {
+            div_msg.innerHTML = (`A empresa ${nome} é uma de suas preferências`);
+        } else {
+            div_msg.innerHTML = (`A empresa ${nome} está fora da sua lista`);
+        }
+    }
+</script>
+

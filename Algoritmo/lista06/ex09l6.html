@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Solicite valor economizado</p>
+    <input type="text" id="input_econo"> <br><br>
+    <button onclick="econo()">Poder de compra</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function econo() {
+        var economia = Number(input_econo.value);
+
+        if (economia <= 0) {
+            div_msg.innerHTML = (`Nada de compras`);
+        } else if (economia < 100) {
+            div_msg.innerHTML = (`Viajem de ida e volta pra Praia Grande`);
+        } else if (economia < 4000) {
+            div_msg.innerHTML = (`Uma boa moto usada`);
+        } else {
+            div_msg.innerHTML = (`Mais alguma bobagem legal`);
+        }
+    }
+</script>

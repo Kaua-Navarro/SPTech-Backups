@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    De: <input type="text" id="input_de"> <br><br>
+    Até: <input type="text" id="input_ate"> <br><br>
+    <button onclick="showevent()">Curto 3 e 5</button> <br><br>
+    <div id="div_msg"></div>
+    </center>  
+</body>
+</html>
+
+<script>
+
+    var de = 0;
+    var ate = 0;
+
+    function showevent() {
+        de = Number(input_de.value);
+        ate = Number(input_ate.value);
+        
+        for (; de<= ate ; de++) {
+            var tri = de % 3;
+            var penta = de % 5;
+            
+            if (tri == 0 && penta == 0) {
+                div_msg.innerHTML += (`TRI PENTA <br>`);
+            } else if (tri == 0) {
+                div_msg.innerHTML += (`TRI <br>`);
+            } else if (penta == 0) {
+                div_msg.innerHTML += (`PENTA <br>`);
+            } else {
+                div_msg.innerHTML += (`${de} <br>`);
+            }
+            
+        }
+    }
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-image:url(https://img.freepik.com/fotos-premium/macaco-sorrindo-com-a-boca-aberta-em-fundo-azul_275897-2108.jpg?w=740);
+background-repeat: no-repeat; width: 1920px; height: 1080px;">
+    <p>Informe a idade do cidadão:</p>
+    <input type="text" id="input_idade"> <br><br>
+    <button onclick="verificar()">Verificar Gratuidade</button> 
+    <button onclick="limpar()">Limpar mensagens</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function verificar() {
+        var idade = Number(input_idade.value);
+
+        if (idade <=10 || idade >=60) {
+            div_msg.innerHTML = (`<br> <br> Oferecer gratuidade ao macaco <br>`);
+        } else {
+            div_msg.innerHTML = (`<img src="macaco-sorrindo-com-a-boca-aberta-em-fundo-azul_275897-2108.jpg" alt="My pic" > Este chimpanzé não tem direito à gratuidade <br>`);
+        }
+        input_idade.value = " "
+
+    }
+
+    function limpar() {
+        div_msg.innerHTML = (" ");
+    }
+</script>

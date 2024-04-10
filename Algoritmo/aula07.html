@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+</head>
+
+<body>
+    <p>Insira temperatura</p>
+    <input type="text" id="input_temperatura">
+    <button onclick="calctemp()">Calcular temperatura</button>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+
+<script>
+    function calctemp() {
+        var temp = (input_temperatura.value);
+
+        if (temp >= 20 && temp <= 24) {
+            div_msg.innerHTML = (`Temperatura confortável`);
+        } else {
+            div_msg.innerHTML = (`Temperatura desconfortável`);
+        }
+
+    }
+</script>

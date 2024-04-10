@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="valorUser" placeholder="Informe um valor inteiro">
+    <div id="mensagem"></div>
+    <button onclick="mostrarMultiplos()">Viva o 7!</buttob>
+</body>
+</html>
+<script>
+    function mostrarMultiplos(){
+        var valor = Number(valorUser.value);
+
+        if(valor >= 0 && valor <= 200){
+            for(var i = 0; i <= valor; i++){
+            var aux = i * 7;
+            mensagem.innerHTML += `O número ${i} exibindo apenas múltiplos de 7 é ${aux}<br>`;
+        }
+        }else{
+            alert("Valor incorreto!! Digite um número entre 0 e 200.");
+        }
+
+        
+    }
+</script>

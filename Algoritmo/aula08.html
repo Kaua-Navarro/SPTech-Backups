@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-image: url(https://ottvsimg.ottvs.com.br/ban/ipi.041080/partner-background-original.jpg);">
+    <center>
+    <h1>Operações com textos</h1>
+    Digite uma frase: <input type="text" id="input_frase"> <br><br>
+    <button onclick="analisar()">Analisar</button> <br><br>
+    <div id="div_msg"></div>
+    </center>
+</body>
+</html>
+
+<script>
+    function analisar () {
+        var frase = input_frase.value;
+
+        var tamanho_frase = frase.length; //captura o comprimento da frase
+
+        div_msg.innerHTML = (`<br> <b> Quantidade de caracteres: ${tamanho_frase} </b> <br>`);
+
+        if (tamanho_frase < 8) {
+            div_msg.innerHTML += (`<br> <b> A frase NÃO POSSUI 8 letras </b> <br>`);
+        } else {
+            div_msg.innerHTML += (`<br> <b> A frase possui AO MENOS 8 letras </b> <br>`);
+        }
+
+        var comeca_com_a = frase.startsWith("a");
+        div_msg.innerHTML += (`<br> <b> Começa com A? ${comeca_com_a} </b> <br>`);
+
+        var termina_com_com = frase.endsWith(".com");
+        div_msg.innerHTML += (`<br> <b> Termina com .com? ${termina_com_com} </b> <br>`);
+
+        var primeira_letra = frase[0]; 
+        div_msg.innerHTML += (`<br> <b> Primeira letra: ${primeira_letra} </b> <br>`);
+
+        var terceira_letra = frase[2];
+        div_msg.innerHTML += (`<br> <b> Terceira letra: ${terceira_letra} </b> <br>`);
+
+        var indice_ultima = tamanho_frase - 1;
+        var ultima_letra = frase[ indice_ultima ];
+        div_msg.innerHTML += (`<br> <b> Última letra: ${ultima_letra} </b> <br>`);
+
+        var indice_arroba = frase.indexOf("@");
+        div_msg.innerHTML += (`<br> <b> Índice de @: ${indice_arroba} </b> <br>`);
+
+        if (indice_arroba < 0) {
+            div_msg.innerHTML += (`<br> <b> Não possui @ nesta frase! </b> <br>`);
+        } else {
+            div_msg.innerHTML += (`<br> <b> Possui @ nesta frase! </b> <br>`);
+        }
+
+        var frase_maiuscula = frase.toUpperCase();
+        div_msg.innerHTML += (`<br> <b> Frase maiúscula: ${frase_maiuscula} </b> <br>`)
+
+        var frase_minuscula = frase.toLowerCase();
+        div_msg.innerHTML += (`<br> <b> Frase minúscula: ${frase_minuscula} </b> <br>`)
+    }
+</script>

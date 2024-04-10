@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="pares()">S2 Pares</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function pares() {
+        var par = 0;
+        for (var index = 0; index <= 100; index++){
+            var par = index % 2;
+            if (par == 0) {
+            div_msg.innerHTML += `${index} <br>`;
+            }
+        }
+    }
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corinthians o maioral</title>
+</head>
+<body>
+    <h1>Qual time de sp você torce?</h1>
+    <input type="text" id="input_time"> <br><br>
+    <button onclick="timereveal()">Fale sobre esse time</button> <br><br>
+    <div id="div_corinthians" style="background-color: black; color: white;"></div>
+    <div id="div_porcosimundos" style="background-color: green; color: white;"></div>
+    <div id="div_baleias" style="background-color: white; color: black;"></div>
+    <div id="div_bambis" style="background-color: black; color: red;"></div>
+</body>
+</html>
+
+<script>
+    var time = 0;
+    function timereveal() {
+         time = input_time.value;
+
+        if (time == "Corinthians") {
+            div_corinthians.innerHTML = (`Salve o Corinthians o maior de todos os tempos!`);
+            time = 0;
+        } else if (time == 'Palmeiras') {
+            div_porcosimundos.innerHTML = (`Salve o alviverde impotente`);
+            time = 0;
+        } else if (time == 'Santos') {
+            div_baleias.innerHTML = (`Agora quem dá a bola é o Santos`);
+            time = 0;
+        } else if (time == 'São Paulo') {
+            div_bambis.innerHTML = (`Salve o Tricolor paulista`);
+            time = 0;
+        }
+
+        
+    }
+</script>
+

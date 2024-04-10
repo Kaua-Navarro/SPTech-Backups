@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="count()">Contar</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function count() {
+        for (var index = 1; index <16; index++) {
+            div_msg.innerHTML += (`${index} <br>`);
+            
+        }
+    }
+</script>

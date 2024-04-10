@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atalhos operações aritméticas</title>
+</head>
+<body>
+    N1: <input type="text" id="input_n1"> <br>
+
+    <button onclick="Multiplicar()">Multiplicar</button>
+    <button onclick="Dividir()">Dividir</button>
+    <button onclick="Somar()">Somar</button>
+    <button onclick="Subtrair()">Subtrair</button>
+    
+    <div id="div_msg"> 1 </div>
+</body>
+</html>
+
+<script>
+    var numero_atual = 1;
+
+    function Multiplicar() {
+        var n1 = Number (input_n1.value);
+        numero_atual = numero_atual * n1;
+        div_msg.innerHTML = numero_atual;
+    }
+    function Dividir() {
+        var n1 = Number (input_n1.value);
+        numero_atual = numero_atual / n1;
+        div_msg.innerHTML = numero_atual;
+    }
+    function Somar() {
+        var n1 = Number (input_n1.value);
+        numero_atual = numero_atual + n1;
+        div_msg.innerHTML = numero_atual;
+    }
+    function Subtrair() {
+        var n1 = Number (input_n1.value);
+        numero_atual = numero_atual - n1;
+        div_msg.innerHTML = numero_atual;
+    }
+</script>
