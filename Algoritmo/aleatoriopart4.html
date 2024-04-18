@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Sorteie números aleatórios a partir de botões!</p>
+    <button onclick="generate010()">Gerar 10</button>
+    <button onclick="generate515()">Gerar 5_15</button>
+    <button onclick="generatem8070()">Gerar -80_70</button>
+    <button onclick="generate1100()">Gerar 1_100</button>
+    <button onclick="generate()">Gerar</button> <br><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function generate() {
+        var aleatorio = Math.random();
+        div_mensagem.innerHTML = `Sorteado: ${aleatorio} <br>`;
+    }
+    function generate010() {
+        var aleatorio = Math.random();
+        var novo_valor = aleatorio * 10
+        div_mensagem.innerHTML = `Número sorteado: ${aleatorio} <br>`;
+        div_mensagem.innerHTML += `Novo valor: ${novo_valor} <br>`;
+    }
+    function generate515() {
+        var min = 5;
+        var max = 15;
+        var intervalo = max - min;
+
+        var aleatorio = Math.random();
+        var novo_valor = (aleatorio * intervalo) + min;
+        div_mensagem.innerHTML = `Número sorteado: ${aleatorio} <br>`;
+        div_mensagem.innerHTML += `Novo valor: ${novo_valor} <br>`;
+    }
+    function generatem8070() {
+        var min = -80;
+        var max = 70;
+        var intervalo = max - min;
+
+        var aleatorio = Math.random();
+        var novo_valor = (aleatorio * intervalo) + min;
+        div_mensagem.innerHTML = `Número sorteado: ${aleatorio} <br>`;
+        div_mensagem.innerHTML += `Novo valor: ${novo_valor} <br>`;
+    }
+    function generate1100() {
+        var min = 1;
+        var max = 100;
+        var intervalo = max - min;
+
+        var aleatorio = Math.random();
+        var novo_valor = (aleatorio * intervalo) + min;
+        var novo_inteiro = novo_valor.toFixed();
+
+        div_mensagem.innerHTML = `Número sorteado: ${aleatorio} <br>`;
+        div_mensagem.innerHTML += `Novo valor: ${novo_valor} <br>`;
+        div_mensagem.innerHTML += `Inteiro: ${novo_inteiro} <br>`;
+    }
+</script>
