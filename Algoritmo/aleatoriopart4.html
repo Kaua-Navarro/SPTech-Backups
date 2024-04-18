@@ -11,6 +11,7 @@
     <button onclick="generate515()">Gerar 5_15</button>
     <button onclick="generatem8070()">Gerar -80_70</button>
     <button onclick="generate1100()">Gerar 1_100</button>
+    <button onclick="generatem200m150()">Gerar</button>
     <button onclick="generate()">Gerar</button> <br><br>
     <div id="div_mensagem"></div>
 </body>
@@ -24,8 +25,11 @@
     function generate010() {
         var aleatorio = Math.random();
         var novo_valor = aleatorio * 10
+        var novo_inteiro = novo_valor.toFixed();
+
         div_mensagem.innerHTML = `Número sorteado: ${aleatorio} <br>`;
         div_mensagem.innerHTML += `Novo valor: ${novo_valor} <br>`;
+        div_mensagem.innerHTML += `Inteiro: ${novo_inteiro} <br>`;
     }
     function generate515() {
         var min = 5;
@@ -34,8 +38,11 @@
 
         var aleatorio = Math.random();
         var novo_valor = (aleatorio * intervalo) + min;
+        var novo_inteiro = novo_valor.toFixed();
+
         div_mensagem.innerHTML = `Número sorteado: ${aleatorio} <br>`;
         div_mensagem.innerHTML += `Novo valor: ${novo_valor} <br>`;
+        div_mensagem.innerHTML += `Inteiro: ${novo_inteiro} <br>`;
     }
     function generatem8070() {
         var min = -80;
@@ -44,8 +51,11 @@
 
         var aleatorio = Math.random();
         var novo_valor = (aleatorio * intervalo) + min;
+        var novo_inteiro = novo_valor.toFixed();
+
         div_mensagem.innerHTML = `Número sorteado: ${aleatorio} <br>`;
         div_mensagem.innerHTML += `Novo valor: ${novo_valor} <br>`;
+        div_mensagem.innerHTML += `Inteiro: ${novo_inteiro} <br>`;
     }
     function generate1100() {
         var min = 1;
