@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp_frase"> 
+    <button onclick="clicar()">clicar</button> <br><br>
+    <div id="div_msg"></div> 
+</body>
+</html>
+
+<script>
+    function clicar() {
+        var frase = inp_frase.value;
+       var qtd_frase = frase.length;
+       
+        if (qtd_frase > 5) {
+            alert`DEVE TER AO MÁXIMO CINCO CARACTERES`;
+        } else {
+            div_msg.innerHTML = `${frase} <br> <br>`;
+
+            for (let index = 0; index < qtd_frase; index++) {
+                var letra_atual = frase[index];
+                div_msg.innerHTML += `${letra_atual} <br> <br>`;
+                
+            }
+        }
+    }
+</script>
