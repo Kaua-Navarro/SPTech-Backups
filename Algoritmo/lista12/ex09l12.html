@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Quantos projetos você já trabalhou?</p>
+    <input type="text" id="input_projetos" placeholder="Insira o nome dos projetos"> <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="mostrar()">Mostrar</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    var projetos = [];
+    var projetosAluno = input_projetos.value;
+    projetos.push(projetosAluno);
+    projetosTam = projetos.length;
+
+    
+    function adicionar() {
+        div_msg.innerHTML = ``
+        console.log(projetos);
+        projetosAluno = '';
+        projetosTam = projetos.length;
+
+        if (projetosTam <= 4) {
+            div_msg.innerHTML += `Você já fez ${projetosTam} projetos. Por isso você é um profissional Júnior. `;
+        } else if (projetosTam > 4 && projetosTam <= 12) {
+            div_msg.innerHTML += `Você já fez ${projetosTam} projetos. Por isso você é um profissional Pleno. `;
+        } else if (projetosTam >= 12) {
+            div_msg.innerHTML += `Você já fez ${projetosTam} projetos. Por isso você é um profissional Sênior. `;
+        } else {
+            div_msg.innerHTML = '';
+        }
+    }
+    function mostrar() {
+        for (var index = projetos; index < projetosTam; index++) {
+            div_msg += `${index + 1}`;
+        }
+    }
+</script>

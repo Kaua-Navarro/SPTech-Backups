@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L12-Ex08</title>
+</head>
+
+<body>
+    Informe o nome do aluno: <input type="text" id="input_aluno">
+    <button onclick="adicionar()">Cadastrar aluno</button>
+    <b id="b_sucesso"></b> <br><br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var alunos = [];
+
+    function adicionar() {
+        if (input_aluno.value == '') {
+            b_sucesso.innerHTML = `<span style="color: red;">digite o nome do aluno</span>`;
+        } else {
+            alunos.push(input_aluno.value);
+            b_sucesso.innerHTML = `O aluno ${input_aluno.value} cadastrado com sucesso!`;
+            
+            input_aluno.value = ''
+            div_mensagem.innerHTML = '';
+            
+            for (var index = alunos.length - 1; index >= 0; index--) {
+                div_mensagem.innerHTML += `O ${index + 1}º aluno é o ${alunos[index]} <br>`;
+            }
+        }
+    }
+
+</script>
