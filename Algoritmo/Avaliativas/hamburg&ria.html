@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburg&Ria</title>
+</head>
+<body>
+    <div id="blend" style="display: block;">
+        Ingrediente:
+        <input type="text" id="inp_ingrediente"> <br>
+        Peso em Gramas:
+        <input type="text" id="inp_peso"> <br>
+        Preço por quilo:
+        <input type="text" id="inp_preco"> <br>
+        <button onclick="adicionar()">Adicionar Ingrediente no Blend</button> <br><br>
+        Nome do Hamburguer:
+        <input type="text" id="inp_nomeH"> <br>
+        <button onclick="preparar()">Preparar Blend e Registrar</button> <br><br>
+        <button onclick="cardápio()">Montar Cardápio</button> <br><br>
+        <p id="p_Msg"></p>
+    </div>
+    <div id="cardapio" style="display: none;">
+        Tipo de Hamburguer:
+        <input type="text" id="inp_tipoH"> <br>
+        Quantidade de hamburgueres:
+        <input type="number" id="inp_qtdH"> <br>
+        Queijo:
+        <select id="queijo">
+            <option selected disabled value="#">Selecione uma opção</option>
+            <option value="nao">Não Colocar</option>
+            <option value="mussarela">Mussarela</option>
+            <option value="prato">Prato</option>
+            <option value="cheddar">Cheddar</option>
+        </select> <br>
+        Cebola:
+        <select id="cebola">
+            <option selected disabled value="#">Selecione uma opção</option>
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option>
+        </select> <br>
+        Alface:
+        <select id="alface">
+            <option selected disabled value="#">Selecione uma opção</option>
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option>
+        </select> <br>
+        Tomate:
+        <select id="tomate">
+            <option selected disabled value="#">Selecione uma opção</option>
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option>
+        </select> <br>
+        <button onclick="adicionarL()">Adicionar Lanche</button> <br><br>
+        <p id="p_Msg1"></p>
+    </div>
+</body>
+</html>
