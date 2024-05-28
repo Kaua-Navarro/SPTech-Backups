@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RatãoPodre.bet</title>
+</head>
+
+<body>
+    <h1>Ratão Podre BET</h1>
+    <p></p>Quantas balas vai apostar</p>
+    <input type="text" id="input_QtdBalas"> <br><br>
+    <p>Insira três números da sorte</p>
+    <input type="text" id="input_NSorte">
+    <button onclick="add()">Adicionar Números da Sorte</button> <br>
+    <button onclick="valendo()">Valendo</button> <br><br>
+    <p>Pesquise suas rodadas!</p>
+    Da rodada:
+    <input type="text" id="input_de">
+    Até a rodada:
+    <input type="text" id="input_ate"> <br><br>
+    <button onclick="pesquisar()">Pesquisar Rodadas</button> <br><br>
+    <p>Pesquise o valor de um dado e veja se já foi sorteado!</p>
+    Dado:
+    <input type="text" id="input_Pdado">
+    <button onclick="pDado()">Pesquisar Dado</button> <br><br>
+    <p>Limpar programa!</p>
+    <button onclick="limpar()">Limpar</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+    var listaQtdBalas = [];
+    var listaRodadas = [];
+    var listaNSorte = [];
+    var listaDado1 = [];
+    var listaDado2 = [];
+
+    var totalBalas = 0;
+    var dado1 = 0;
+    var dado2 = 0;
+    var rodada = 0;
+
+    function add() {
+        var NS = Number(input_NSorte.value);
+
+        if (NS == '') {
+            alert("Insira os seus números da sorte!");
+        } else {
+            listaNSorte.push(NS);
+            console.log(listaNSorte);
+            alert("Número da sorte adicionado");
+            input_NSorte.value = '';
+
+            if (listaNSorte.length < 3 || listaNSorte > 3) {
+            alert(`Os números da sorte devem ser extamente 3 números`);
+            input_NSorte.value = '';
+            }
+        }
+    }
+
+    function valendo() {
+        var qtdBalas = input_QtdBalas.value
+
+        if (qtdBalas == '' || listaNSorte.length < 3) {
+            alert("Insira a quantidade de balas que deseja apostar!");
+        } else {
+            var min = 10;
+            var max = 20;
+            var intervalo = max - min;
+            var aleatorio = Math.random();
+
+            rodada = aleatorio * intervalo + min;
+            rodada = Number(rodada.toFixed(0));
+            listaRodadas.push(rodada);
+            console.log(listaRodadas);
+
+            for (var index = 1; index <= rodada; index++) {
+                var minD = 1;
+                var maxD = 6;
+                var intervaloD = maxD - minD;
+                var aleatorioD1 = Math.random();
+                var aleatorioD2 = Math.random();
+
+                dado1 = aleatorioD1 * intervaloD + minD;
+                dado2 = aleatorioD2 * intervaloD + minD;
+                dado1 = Number(dado1.toFixed(0));
+                dado2 = Number(dado2.toFixed(0));
+
+                var soma = dado1 + dado2;
+
+                if (listaNSorte.indexOf(soma) == -1) {
+                    totalBalas = totalBalas - qtdBalas;
+                    listaQtdBalas.push(totalBalas);
+                    console.log(listaQtdBalas);
+                    listaDado1.push(dado1);
+                    console.log(listaDado1);
+                    listaDado2.push(dado2);
+                    console.log(listaDado2);
+
+                    div_msg.innerHTML += `
+                Rodada ${index} <br>
+                Números da Sorte: ${listaNSorte} <br>
+                Número do Dado 1: ${listaDado1[index - 1]} <br>
+                Número do Dado 2: ${listaDado2[index - 1]} <br>
+                Saldo de Balas: ${listaQtdBalas[index - 1]} <br>
+                <b>Rodada Perdida</b><br>`;
+                } else {
+                    totalBalas = qtdBalas * 5;
+                    listaQtdBalas.push(totalBalas);
+                    listaDado1.push(dado1);
+                    listaDado2.push(dado2);
+
+                    div_msg.innerHTML += `Rodada ${index} <br>
+                Números da Sorte: ${listaNSorte} <br>
+                Número do Dado 1: ${listaDado1[index - 1]} <br>
+                Número do Dado 2: ${listaDado2[index - 1]} <br>
+                Saldo de Balas: ${listaQtdBalas[index - 1]} <br>
+                <b>Rodada Ganha</b><br>`;
+                }
+            }
+            if (totalBalas < 0) {
+                div_msg.innerHTML += `Você terminou com o saldo negativo de ${totalBalas} balas!, pague o que você deve!`;
+            } else if (totalBalas < qtdBalas) {
+                div_msg.innerHTML += `Que pena!, você terminou com o saldo menor do que você apostou!, seu saldo atual é de ${totalBalas} balas`;
+            } else if (totalBalas == qtdBalas) {
+                div_msg.innerHTML += `Holy molly!, você conseguiu empatar o seu saldo isto é incrível e muito raro de acontecer, seu saldo atual é de ${totalBalas} balas`;
+            } else if (totalBalas > qtdBalas ) {
+                div_msg.innerHTML += `Santa Mãe!, você ganhou um saldo de ${totalBalas} balas um saldo maior do que você apostou!`;
+            }
+        }
+    }
+
+    function pesquisar() {
+        div_msg.innerHTML = '';
+        var de = Number(input_de.value);
+        var ate = Number(input_ate.value);
+
+        for (; de <= ate; de++) {
+            var soma = listaDado1[de] + listaDado2[de];
+
+            if (listaNSorte.indexOf(soma) == -1) {
+
+                div_msg.innerHTML += `
+                Rodada ${de} <br>
+                Números da Sorte: ${listaNSorte} <br>
+                Número do Dado 1: ${listaDado1[de]} <br>
+                Número do Dado 2: ${listaDado2[de]} <br>
+                Saldo de Balas: ${listaQtdBalas[de]} <br>
+                <b>Rodada Perdida</b><br>
+                `;
+            } else {
+                
+                div_msg.innerHTML += `
+                Rodada ${de} <br>
+                Números da Sorte: ${listaNSorte} <br>
+                Número do Dado 1: ${listaDado1[de]} <br>
+                Número do Dado 2: ${listaDado2[de]} <br>
+                Saldo de Balas: ${listaQtdBalas[de]} <br>
+                <b>Rodada Ganha</b><br>
+                `;
+            }
+        }
+    }
+
+    function pDado() {
+        div_msg.innerHTML = '';
+        var pDado = Number(input_pDado.value);
+        var tLRodadas = listaRodadas.length;
+        for (var index = 1; index <= tLRodadas[index - 1]; index++) {
+            if (listaDado1[index - 1] == pDado || listaDado2[index - 1] == pDado) {
+                 div_msg.innerHTML += `Dado ${pDado} encontrado na rodada ${i}!`;
+            } else {
+                div_msg.innerHTML += `Dado ${pDado} não encontrado na rodada ${i}!`;
+            }
+            
+        }
+    }
+
+    function limpar() {
+        div_msg.innerHTML = '';
+        listaDado1 = [];
+        listaDado2 = [];
+        listaNSorte = [];
+        listaQtdBalas = [];
+        listaRodadas = [];
+        input_NSorte.value = '';
+        input_QtdBalas.value = '';
+        input_ate.value = '';
+        input_de.value = '';
+        input_pDado = '';
+    }
+</script>
