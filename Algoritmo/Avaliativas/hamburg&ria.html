@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamburg&Ria</title>
 </head>
+
 <body>
     <div id="blend" style="display: block;">
         Ingrediente:
-        <input type="text" id="inp_ingrediente"> <br>
+        <input type="text" id="input_ingrediente"> <br>
         Peso em Gramas:
-        <input type="text" id="inp_peso"> <br>
+        <input type="text" id="input_peso"> <br>
         Preço por quilo:
-        <input type="text" id="inp_preco"> <br>
+        <input type="text" id="input_preco"> <br>
         <button onclick="adicionar()">Adicionar Ingrediente no Blend</button> <br><br>
         Nome do Hamburguer:
-        <input type="text" id="inp_nomeH"> <br>
+        <input type="text" id="input_nomeH"> <br>
         <button onclick="preparar()">Preparar Blend e Registrar</button> <br><br>
         <button onclick="cardápio()">Montar Cardápio</button> <br><br>
         <p id="p_Msg"></p>
     </div>
     <div id="cardapio" style="display: none;">
         Tipo de Hamburguer:
-        <input type="text" id="inp_tipoH"> <br>
+        <input type="text" id="input_tipoH"> <br>
         Quantidade de hamburgueres:
-        <input type="number" id="inp_qtdH"> <br>
+        <input type="number" id="input_qtdH"> <br>
         Queijo:
         <select id="queijo">
             <option selected disabled value="#">Selecione uma opção</option>
@@ -55,4 +57,65 @@
         <p id="p_Msg1"></p>
     </div>
 </body>
+
 </html>
+<script>
+    var listaIngredienteB = [];
+    var listaPesoB = [];
+    var listaPrecoB = [];
+    var listaNomeH = [];
+
+    function adicionar() {
+        p_msg.innerHTML = '';
+
+        var ingredienteB = input_ingrediente.value;
+        var pesoB = Number(input_peso.value);
+        var precoB = Number(input_preco.value);
+        var indiceListaIB = listaIngredienteB.indexOf(ingredienteB);
+        var indiceListaPesoB = listaPesoB.indexOf(pesoB);
+        var indiceListaPrecoB = listaPrecoB.indexOf(precoB);
+
+        if (ingredienteB == '' || pesoB == '' || precoB == '') {
+            p_msg.innerHTML += (`Insira todos campos para adicionar o ingrediente no blend`);
+        } else if (ingredienteB == '') {
+            p_msg.innerHTML += (`Digite o nome do ingrediente para adicioná-lo no blend`);
+        } else {
+            if (indiceListaIB != -1 || indiceListaPesoB != -1 || indiceListaPrecoB != -1) {
+                p_msg.innerHTML += (`Este ingrediente já existe no blend. Adicione outro ingrediente, por favor.`);
+            } else {
+                listaIngredienteB.push(ingredienteB);
+                listaPesoB.push(pesoB);
+                listaPrecoB.push(precoB);
+
+                console.log(listaIngredienteB);
+                console.log(listaPesoB);
+                console.log(listaPrecoB);
+
+                p_msg.innerHTML += (`Ingrediente adicionado com sucesso ao blend!`);
+            }
+        }
+    }
+
+    function preparar() {
+        p_msg.innerHTML = '';
+
+        var nomeH = input_nomeH.value;
+
+        if (nomeH == '') {
+            p_msg.innerHTML += `Preencha o nome do hambúrguer para prosseguir!`;
+        } else {
+            if (listaPesoB.length < 1 || listaIngredienteB < 1 || listaPrecoB < 1) {
+                p_msg.innerHTML += `Falha ao prosseguir com a preparação do hambúrguer, devem ter ao menos dois ingredientes para continuar.`
+            } else {
+                listaNomeH.push(nomeH);
+
+                console.log(listaNomeH);
+
+                for (var i = 1; i <= listaIngredienteB.length; i++) {
+                    var totalI = listaPrecoB[i - 1] * listaPesoB[i - 1];
+                    p_msg.innerHTML += `${i} - Ingrediente:${listaIngredienteB [i - 1]} - Peso:${listaPesoB [i - 1]} - Preço KG:${listaPrecoB [i - 1]} - Preço Final:${totalI}`;
+                }
+            }
+        }
+    }
+</script>

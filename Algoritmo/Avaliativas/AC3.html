@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tênis Clube SPTECH</title>
+    <style>
+      body {
+        display: flex;
+        align-items: stretch;
+      }
+
+      body div:first-child,
+      body div:nth-of-type(2) {
+        padding: 8px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+      }
+
+      body div:nth-of-type(2) {
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="input_qtd_partidas">
+        Rodadas máximas:
+        <input id="input_qtd_partidas" /><br />
+      </label>
+
+      <button onclick="realizar_partida()">Realizar partida</button>
+
+      <h3>Informe as partidas que deseja relembrar</h3>
+
+      <label for="input_inicio_intervalo">Início:</label>
+      <input id="input_inicio_intervalo" />
+      <label for="input_fim_intervalo">Fim:</label>
+      <input id="input_fim_intervalo" />
+
+      <button onclick="relembrar_partidas()">Relembrar</button>
+    </div>
+    <div>
+      <h3>Painel</h3>
+      <div id="div_painel"></div>
+    </div>
+  </body>
+</html>
+<script>
+  var listaRodMax = [];
+  var listaPontosJ1 = [];
+  var listaPontosJ2 = [];
+  function realizar_partida() {
+    var rodMax = Number(input_qtd_partidas.value);
+    var indiceRodMax = listaRodMax.indexOf(rodMax);
+    var indicePontosJ1 = listaPontosJ1.indexOf();
+    var indicePontosJ2 = listaPontosJ2.indexOf();
+    var totalJ1 = 0;
+    var totalJ2 = 0;
+    if (rodMax <= 0 || rodMax == '') {
+      alert(`Número de partidas inválido`);
+    } else {
+      listaRodMax.push(rodMax);
+      console.log(listaRodMax);
+      if (indiceRodMax != -1) {
+        alert(`Número de partidas excedido`);
+      } else {
+        for (var i = 1; i <= listaRodMax; i++) {
+          totalJ1 += listaPontosJ1[i - 1];
+          totalJ2 += listaPontosJ2[i - 1];
+          var aleatorio = Math.random();
+          var aleatorio1 = Math.random();
+          var min = 1;
+          var max = 10;
+          var intervalo = max - min;
+          var pontosRandom = (aleatorio * intervalo) + min;
+          var pontosRandomTF = pontosRandom.toFixed(0);
+          var pontosRandom1 = (aleatorio1 * intervalo) + min;
+          var pontosRandomTF1 = pontosRandom1.toFixed(0);
+          listaPontosJ1.push(pontosRandomTF);
+          listaPontosJ2.push(pontosRandomTF1);
+          console.log(listaPontosJ1);
+          console.log(listaPontosJ2);
+          div_painel.innerHTML += `Rodada ${i}:<br>
+          Jogador 1: ${listaPontosJ1[i - 1]}<br>
+          Jogador 2: ${listaPontosJ2[i - 1]}<br>`;
+          div_painel.innerHTML += `Total Jogador 1: ${totalJ1}<br>
+          Total Jogador 2: ${totalJ2}<br>`;
+        }
+      }
+    }
+  }
+  function relembrar_partidas() {
+    div_painel.innerHTML = '';
+    var inicio = Number(input_inicio_intervalo.value);
+    var fim = Number(input_fim_intervalo.value);
+    if(inicio == '' || fim == ''){
+      alert(`Insira qual jogo deseja relembrar!`)
+    } else {
+      for (var i = inicio; i <= fim; i++) {
+                div_painel.innerHTML += `Rodada ${i}:<br>
+                Jogador 1: ${listaPontosJ1[i - 1]}<br>
+                Jogador 2: ${listaPontosJ2[i - 1]}<br>`
+            }
+    }
+  }
+</script>
